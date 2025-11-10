@@ -1,5 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { DepartamentoService } from '../../../services/departamento';
+import { RouterLink } from '@angular/router';
 import { Departamento } from '../../../interfaces/departamento';
 import { CommonModule } from '@angular/common';
 import { environment } from '../../../../environments/environment';
@@ -9,7 +10,7 @@ import { DepartamentoComponent } from '../../../components/card-departamento/car
 @Component({
   selector: 'app-inventory',
   standalone: true,
-  imports: [CommonModule, DepartamentoComponent],
+  imports: [CommonModule, RouterLink, DepartamentoComponent],
   templateUrl: './inventory.html',
   styleUrl: './inventory.css',
 })

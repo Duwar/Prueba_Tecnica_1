@@ -1,0 +1,40 @@
+<div class="text-center shadow card-hover text-white card-personalizada border-0 p-3" style="max-width: 24rem; margin: 2rem auto; background-color: #343a40;">
+
+  <h4 class="mb-3 d-flex align-items-center justify-content-center">Crear Departamento</h4>
+
+  <form [formGroup]="departamentoForm" (ngSubmit)="createDepartamento()">
+
+    <!-- Nombre -->
+    <div class="mb-2">
+      <input type="text" formControlName="name" class="form-control form-control-sm" placeholder="Nombre del departamento" />
+    </div>
+
+    <!-- Alcalde -->
+    <div class="mb-2">
+      <input type="text" formControlName="alcalde" class="form-control form-control-sm" placeholder="Alcalde" />
+    </div>
+
+    <!-- Fecha de fundación -->
+    <div class="mb-2">
+      <input type="date" formControlName="fecha_fundacion" class="form-control form-control-sm" />
+    </div>
+
+    <!-- Población -->
+    <div class="mb-2">
+      <input type="number" formControlName="poblacion" class="form-control form-control-sm" placeholder="Población" min="1" />
+    </div>
+
+    <!-- Bandera -->
+    <div class="mb-3">
+      <input type="file" class="form-control form-control-sm" (change)="onFileChange($event)" />
+    </div>
+
+    <!-- Botones -->
+    <div class="d-flex justify-content-center gap-2 mt-2">
+      <button type="submit" class="btn btn-success btn-sm">Crear</button>
+      <button type="button" class="btn btn-secondary btn-sm" (click)="departamentoForm.reset()">Cancelar</button>
+    </div>
+
+  </form>
+
+</div>

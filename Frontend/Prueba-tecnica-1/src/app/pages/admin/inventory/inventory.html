@@ -1,5 +1,9 @@
 <h1 class="d-flex align-items-center justify-content-center">Administración de Departamentos</h1>
-
+<div>
+ <a class="btn btn-light btn-sm ms-auto" routerLink="/registerDepartamento">
+  Crear usuario
+</a>
+</div>
 <div class="container d-flex flex-wrap gap-3 p-3 d-flex align-items-center justify-content-center">
   <div *ngFor="let dep of departamentos" (click)="seleccionarDepartamento(dep)">
   {{dep.name}}

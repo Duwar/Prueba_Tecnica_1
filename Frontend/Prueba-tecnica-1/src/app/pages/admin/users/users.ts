@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router,RouterLink } from '@angular/router';
 import { UserService } from '../../../services/users';
 import { User } from '../../../interfaces/user';
 import { Profil } from '../../../components/user/user'; // tu componente standalone
@@ -10,7 +10,7 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-users',
   standalone: true,
-  imports: [Profil, CommonModule], // importamos el componente para poder usarlo
+  imports: [Profil, CommonModule, RouterLink], // importamos el componente para poder usarlo
   templateUrl: './users.html',
   styleUrls: ['./users.css']
 })

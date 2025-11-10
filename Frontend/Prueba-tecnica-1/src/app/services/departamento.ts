@@ -22,7 +22,7 @@ export class DepartamentoService {
 
   // Crear Departamento
   createDepartamento(formData: FormData): Observable<any> {
-    return this._httpClient.post(`${this.apiUrl}/departamento/crear`, {
+    return this._httpClient.post(`${this.apiUrl}/departamento/crear`, formData, {
       headers: this.getAuthHeaders(),
     });
   }
