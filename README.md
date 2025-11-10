@@ -1,3 +1,8 @@
+Usuario Admin, para pruebas
+
+Username:Admintest2
+Password:Test1234
+
 # Gestión de Empleados y Departamentos
 
 Este proyecto es una aplicación web para la gestión de **empleados** y **departamentos** en una organización. Permite realizar operaciones CRUD (Crear, Leer, Actualizar, Eliminar) tanto para empleados como para departamentos, ofreciendo una **interfaz de usuario intuitiva**.
