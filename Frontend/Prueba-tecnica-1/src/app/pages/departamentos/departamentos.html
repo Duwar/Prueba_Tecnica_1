@@ -1,0 +1,28 @@
+<header>
+    <!-- 2. usar el componente reutilizable con su selector -->
+    <!-- <app-navbar></app-navbar> -->
+</header>
+
+<!-- Main -->
+<main class="min-vh-50 d-flex justify-content-center align-items-center my-5 flex-column gap-3 ">
+
+<div class="container mt-4">
+  <h2 class="text-center mb-4">Lista de Departamentos</h2>
+
+  <div class="d-flex flex-wrap justify-content-center">
+    <app-departamento-card
+      *ngFor="let dep of departamentos"
+      [departamento]="dep"
+      (seleccionar)="irAUsuarios($event.id, $event.name)">
+    </app-departamento-card>
+  </div>
+
+  <div *ngIf="departamentos.length === 0" class="text-center text-muted mt-4">
+    No hay departamentos disponibles.
+  </div>
+</div>
+
+
+</main>
+<!-- Footer -->
+<footer></footer>

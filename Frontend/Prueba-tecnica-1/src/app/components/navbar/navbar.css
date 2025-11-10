@@ -1,0 +1,23 @@
+.color-bg-nav{
+    background-color : black;
+}
+
+.color-Letter{
+    color: white!important;
+}
+
+.btn-outline-white {
+  color: white;
+  border-color: white;
+}
+.btn-outline-white:hover, .btn-outline-white:focus {
+  background-color: white;
+  color: #000; 
+}
+
+.logo{
+    background-color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
+}

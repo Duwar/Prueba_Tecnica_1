@@ -1,0 +1,60 @@
+<div *ngIf="departamento as dep; else cargando"
+  class="text-center shadow card-hover text-white card-personalizada border-0 p-3" style="width: 24rem;">
+
+  <!-- Bandera -->
+  <div class="position-relative">
+    <img [src]="baseUrl + dep.bandera" class="rounded-circle mt-3 img-tamano"
+      alt="{{ dep.name }}"
+      style="width:110px; height:110px; object-fit:cover; border: 3px solid #fff; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+
+    <div *ngIf="editMode" class="mt-2">
+      <input type="file" class="form-control form-control-sm" (change)="onFileChange($event)" />
+    </div>
+  </div>
+
+  <!-- Información -->
+  <div class="card-body p-4 text-start">
+    <!-- Nombre -->
+    <div *ngIf="!editMode" class="d-flex justify-content-center my-2">
+      <h5 class="card-title text-primary fw-bold">{{ departamento.name }}</h5>
+    </div>
+    <div *ngIf="editMode" class="d-flex gap-2 mb-2">
+      <input [(ngModel)]="dep.name" class="form-control form-control-sm" placeholder="Nombre del departamento" />
+    </div>
+
+    <!-- Alcalde -->
+    <p class="card-text text-secondary mb-2">
+      <strong>Alcalde: </strong>
+      <span *ngIf="!editMode">{{ dep.alcalde }}</span>
+      <input *ngIf="editMode" [(ngModel)]="dep.alcalde" class="form-control form-control-sm mt-1" />
+    </p>
+
+    <!-- Población -->
+    <p class="card-text text-secondary mb-2">
+      <strong>Población: </strong>
+      <span *ngIf="!editMode">{{ dep.poblacion }}</span>
+      <input *ngIf="editMode" [(ngModel)]="dep.poblacion" type="number" class="form-control form-control-sm mt-1" />
+    </p>
+
+    <!-- Fecha fundación -->
+    <p class="card-text text-secondary mb-3">
+      <strong>Fundación: </strong>
+      <span *ngIf="!editMode">{{ dep.fecha_fundacion | date:'longDate' }}</span>
+      <input *ngIf="editMode" [(ngModel)]="dep.fecha_fundacion" type="date" class="form-control form-control-sm mt-1" />
+    </p>
+
+    <!-- Botones -->
+    <div class="d-flex justify-content-center gap-2 mt-3">
+      <button *ngIf="!editMode" class="btn btn-light btn-sm ms-auto" (click)="toggleEdit()">✏️ Editar</button>
+      <button *ngIf="editMode" class="btn btn-success btn-sm" (click)="saveChanges()">Guardar</button>
+      <button *ngIf="editMode" class="btn btn-secondary btn-sm" (click)="toggleEdit()">Cancelar</button>
+      <button *ngIf="editMode" class="btn btn-danger" (click)="eliminarDepartamento()">Eliminar</button>
+    </div>
+  </div>
+</div>
+
+<ng-template #cargando>
+  <div class="text-center mt-4 text-muted border-0 card">
+    Cargando información del departamento...
+  </div>
+</ng-template>

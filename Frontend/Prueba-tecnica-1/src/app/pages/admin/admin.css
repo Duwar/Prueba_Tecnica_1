@@ -1,0 +1,32 @@
+.contenedor-nav {
+    width: 300px;
+    background-color: var(--color-enfasis1);
+    color: var(--color-enfasis);
+    font-family: var(--texto-secundario);
+    font-size: 20px;
+    border-radius: 0px;
+
+}
+
+
+.nav-link {
+    display: block;
+    padding: 0.8rem 1rem;
+    color: var(--color-enfasis2);
+    text-decoration: none;
+    border-radius: 12px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+    border: 3px solid var(--color-fondo);
+    /* grosor + tipo + color */
+    border-radius: 8px;
+    color: var(--color-fondo);
+    box-shadow: 0 2px 8px rgba(0, 120, 255, 0.4);
+}
+
+.cierre {
+    cursor: pointer;
+}

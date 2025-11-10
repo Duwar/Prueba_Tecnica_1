@@ -1,0 +1,21 @@
+<h1 class="d-flex align-items-center justify-content-center">Administración de Departamentos</h1>
+
+<div class="container d-flex flex-wrap gap-3 p-3 d-flex align-items-center justify-content-center">
+  <div *ngFor="let dep of departamentos" (click)="seleccionarDepartamento(dep)">
+  {{dep.name}}
+    <img [src]="baseUrl + dep.bandera" class="card-img-top" alt="Bandera del departamento">
+    <div class="card-body">
+      <h5 class="card-title">{{ dep.name }}</h5>
+      <p class="card-text">Alcalde: {{ dep.alcalde }}</p>
+      <p class="card-text">Población: {{ dep.poblacion | number }}</p>
+
+    </div>
+  </div>
+</div>
+
+<!-- Mostrar formulario de edición del departamento seleccionado -->
+<div *ngIf="selectedDepartamentoId" class="d-flex align-items-center justify-content-center">
+  <app-card-departamento [departamentoName]="selectedDepartamentoname!"
+  [departamentoId]="selectedDepartamentoId!"
+       [attr.data-key]="selectedDepartamentoname"></app-card-departamento>
+</div>

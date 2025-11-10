@@ -1,0 +1,19 @@
+<div class="container mt-4">
+  <h2 class="text-center mb-4">Empleados del departamento: {{ departamentoName }}</h2>
+
+  <div class="d-flex flex-wrap justify-content-center">
+    <div *ngFor="let user of usuarios" class="card m-3 shadow-sm" style="width: 18rem;">
+      <img [src]="baseUrl + user.fotoPerfil" class="card-img-top" alt="{{ user.nombre }}">
+      <div class="card-body text-center">
+        <h5 class="card-title">{{ user.nombre }} {{ user.apellido1 }}</h5>
+        <p class="card-text"><strong>Edad:</strong> {{ user.Edad }}</p>
+        <p class="card-text"><strong>Departamento:</strong> {{ user.name_departamento?.name }}</p>
+        <p class="card-text"><strong>Username:</strong> {{ user.username }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="usuarios.length === 0" class="text-center text-muted mt-4">
+    No hay usuarios en este departamento.
+  </div>
+</div>

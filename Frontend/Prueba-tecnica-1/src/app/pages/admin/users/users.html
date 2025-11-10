@@ -1,0 +1,28 @@
+<h1 class="d-flex align-items-center justify-content-center">Gestión de Empleados</h1>
+
+<div class="container d-flex flex-wrap gap-3 p-3 d-flex align-items-center justify-content-center">
+
+  <!-- Lista de usuarios -->
+  <div 
+    *ngFor="let user of allUsers" 
+    class="card p-3" 
+    style="width: 200px; cursor: pointer;"
+    [class.border-primary]="selectedUserId === user._id" 
+    [class.border-3]="selectedUserId === user._id"
+    (click)="seleccionarUsuario(user._id)"
+  >
+    <img [src]="baseUrl + user.fotoPerfil" class="card-img-top" alt="Foto del usuario">
+    <div class="card-body">
+      <h5 class="card-title">{{ user.nombre }}</h5>
+      <p class="card-text">{{ user.username }}</p>
+      <p class="card-text">{{ user.name_departamento?.name }}</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- Formulario de edición del usuario seleccionado -->
+<div *ngIf="selectedUserId" class="d-flex align-items-center justify-content-center">
+  <app-user *ngIf="selectedUserId" [usuarioId]="selectedUserId" [attr.data-key]="selectedUserId">
+  </app-user>
+</div>

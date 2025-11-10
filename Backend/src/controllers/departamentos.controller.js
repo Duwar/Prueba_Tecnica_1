@@ -50,8 +50,8 @@ export const getAllDepartamentos = async (req, res) => {
 // GET departamento por nombre exacto
 export const getDepartamentoByName = async (req, res) => {
     try {
-        const { nombre } = req.params; // nombre desde la URL
-        const departamento = await departamentoModel.findOne({ nombre: nombre });
+        const { name } = req.params; // nombre desde la URL
+        const departamento = await departamentoModel.findOne({ name: name });
         if (!departamento) return res.status(404).json({ mensaje: "Departamento no encontrado" });
         
         return res.status(200).json({

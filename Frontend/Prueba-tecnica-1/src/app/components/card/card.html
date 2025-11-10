@@ -1,0 +1,9 @@
+<div class="card shadow-lg text-center m-3 clickable" style="width: 20rem;" (click)="onCardClick()">
+    <img [src]="'http://localhost:3000' + departamento.bandera" class="card-img-top" alt="Bandera del departamento">
+    <div class="card-body">
+        <h5 class="card-title text-primary fw-bold">{{ departamento.name }}</h5>
+        <p><strong>Alcalde:</strong> {{ departamento.alcalde }}</p>
+        <p><strong>Fundación:</strong> {{ departamento.fecha_fundacion | date:'longDate' }}</p>
+        <p><strong>Población:</strong> {{ departamento.poblacion | number }}</p>
+    </div>
+</div>

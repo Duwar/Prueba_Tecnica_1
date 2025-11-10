@@ -1,0 +1,69 @@
+<div *ngIf="user as usuario; else cargando"
+  class="text-center shadow card-hover text-white card-personalizada border-0 p-3" style="width: 24rem;">
+
+  <!-- Foto -->
+  <div class="position-relative">
+    <img [src]="baseUrl + usuario.fotoPerfil" class="rounded-circle mt-3 img-tamano"
+      alt="{{ usuario.nombre + ' ' + usuario.apellido1 + ' ' + usuario.apellido2}}"
+      style="width:110px; height:110px; object-fit:cover; border: 3px solid #fff; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+
+    <!-- Campo de cambio de imagen (solo si está editando) -->
+    <div *ngIf="editMode" class="mt-2">
+      <input type="file" class="form-control form-control-sm" (change)="onFileChange($event)" />
+    </div>
+  </div>
+
+  <!-- Información -->
+  <div class="card-body p-4 text-start">
+
+    <!-- Nombre -->
+    <div class="d-flex justify-content-center my-2">
+      <h5 *ngIf="!editMode" class="card-title mb-1">{{ usuario.nombre }} {{ usuario.apellido1 }} {{ usuario.apellido2 }}</h5>
+    </div>
+
+    <div *ngIf="editMode" class="d-flex gap-2 mb-2">
+      <input [(ngModel)]="usuario.nombre" class="form-control form-control-sm" placeholder="Nombre" />
+      <input [(ngModel)]="usuario.apellido1" class="form-control form-control-sm" placeholder="Primer Apellido" />
+       <input [(ngModel)]="usuario.apellido2" class="form-control form-control-sm" placeholder="Segundo Apellido" />
+
+    </div>
+
+    <!-- Usuario -->
+
+      <h6 class="card-subtitle mb-2 text-info ">Usuario: {{ usuario.username }}</h6>
+
+    <!-- Correo -->
+    <p class="card-text text-secondary mb-2">
+      <strong>Departamento: </strong>
+      <span *ngIf="!editMode">{{ usuario.name_departamento.name }}</span>
+      <input *ngIf="editMode" [(ngModel)]="usuario.name_departamento.name" class="form-control form-control-sm mt-1" />
+    </p>
+
+    <!-- Teléfono -->
+    <p class="card-text text-secondary mb-3">
+      <strong>Edad: </strong>
+      <span *ngIf="!editMode">{{ usuario.Edad }}</span>
+      <input *ngIf="editMode" [(ngModel)]="usuario.Edad" class="form-control form-control-sm mt-1" />
+    </p>
+
+    <!-- Nueva contraseña -->
+    <div *ngIf="editMode" class="mb-2">
+      <input type="password" [(ngModel)]="newPassword" class="form-control form-control-sm"
+        placeholder="Nueva contraseña" />
+    </div>
+
+    <!-- Botones -->
+    <div class="d-flex justify-content-center gap-2 mt-3 ">
+      <button *ngIf="!editMode" class="btn btn-light btn-sm ms-auto" (click)="toggleEdit()">✏️ Editar perfil</button>
+      <button *ngIf="editMode" class="btn btn-success btn-sm" (click)="saveChanges()">Guardar</button>
+      <button *ngIf="editMode" class="btn btn-secondary btn-sm" (click)="toggleEdit()">Cancelar</button>
+      <button *ngIf="editMode" class="btn btn-danger" (click)="deleteUser()">Eliminar usuario</button>
+    </div>
+  </div>
+</div>
+
+<ng-template #cargando>
+  <div class="text-center mt-4 text-muted border-0 card">
+    Cargando información del usuario...
+  </div>
+</ng-template>

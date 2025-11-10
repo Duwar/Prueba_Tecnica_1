@@ -47,7 +47,8 @@ export const login = async (request, response) => {
     return response.status(200).json({
         "mensaje" : "Login exitoso!!",
         "token" : token,
-        _id: userFound._id
+        _id: userFound._id,
+        role: userFound.role
     })
 
  } catch (error){ 

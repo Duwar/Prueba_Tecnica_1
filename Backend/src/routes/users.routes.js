@@ -8,7 +8,7 @@ export const userRouter = express.Router();
 
 // 3. definir las rutas
 userRouter.post("/crear", upload.single("fotoPerfil"), postUsers);
-userRouter.get("/mostrar", auth("admin"), getAllUsers);
+userRouter.get("/mostrar", getAllUsers);
 userRouter.get("/mostrar/:id", getUserById);
 userRouter.get("/mostrarusuarios/:name", getUsersByDepartamento);
 userRouter.put("/actualizar/:id", upload.single("fotoPerfil"), putUserById);

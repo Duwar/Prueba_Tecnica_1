@@ -86,19 +86,16 @@ export const getUsersByDepartamento = async (req, res) => {
             return res.status(400).json({ mensaje: "Debe enviar el nombre del departamento" });
         }
 
-        // Buscar departamento primero
+        // Buscar departamento por su nombre
         const departamento = await departamentoModel.findOne({ name });
         if (!departamento) {
             return res.status(404).json({ mensaje: "Departamento no encontrado" });
         }
 
-        const usuarios = await usuarioModel.find()
-            .populate({
-                path: 'name_departamento',  // campo que referencia a Nombree del Departamento
-                match: { name: name },    // filtro por nombre
-                select: 'name',             // solo traer nombre del departamento
-            })
-            .select('-contrasena');// excluye la contraseña
+        // Buscar usuarios cuyo name_departamento coincida con el _id del departamento
+        const usuarios = await usuarioModel.find({ name_departamento: departamento._id })
+            .populate('name_departamento', 'name') // traer solo el nombre del departamento
+            .select('-_id -contrasena -__v -role');           // excluir campos sensibles
 
         return res.status(200).json({
             mensaje: "Usuarios obtenidos correctamente",
@@ -106,7 +103,7 @@ export const getUsersByDepartamento = async (req, res) => {
         });
 
     } catch (error) {
-        return res.status(400).json({
+        return res.status(500).json({
             mensaje: "Ocurrió un error al obtener los usuarios del departamento",
             error: error.message || error
         });
